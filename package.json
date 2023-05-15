@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client",
+    "e2e"
+  ],
+  "scripts": {
+    "build:client": "yarn workspace sea-to-see-client build",
+    "dev": "yarn workspace sea-to-see-server dev",
+    "dev:debug": "yarn workspace sea-to-see-server dev:debug",
+    "heroku-postbuild": "yarn workspace sea-to-see-client build",
+    "start": "yarn workspace sea-to-see-server start",
+    "dev:cypress": "yarn workspace sea-to-see-server dev:e2e",
+    "e2e:open": "yarn workspace sea-to-see-e2e e2e:open",
+    "e2e:run": "yarn workspace sea-to-see-e2e e2e:run"
+  },
+  "engines": {
+    "node": "^16.18"
+  }
+}
