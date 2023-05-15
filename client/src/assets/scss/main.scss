@@ -1,7 +1,13 @@
 @import "./foundation/settings";
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Lilita+One&family=Montserrat:wght@200;300;400;500;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Ubuntu:wght@300;400;500&display=swap");
+
 // place global css here
+
+//color palette
+$main-background-color: #F8F8FF;
+
 *,
 *::before,
 *::after {
@@ -11,4 +17,46 @@
 :root {
   -moz-tab-size: 4;
   tab-size: 4;
+}
+
+body {
+  background-color: $main-background-color;
+}
+
+.sea-to-see {
+  font-family: 'Playfair Display', sans-serif;
+}
+
+.username { 
+  font-family: 'Playfair Display', sans-serif;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  line-height: 1;
+  text-decoration: none;
+  display: block;
+  font-weight: bold;
+  margin-top: .6rem;
+  margin-right: 20px;
+  padding: 11.2px, 16px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1;
+  list-style-type: none;
+  width: auto;
+  border-bottom:#263A29 solid;
+}
+.dropdown-menu > li {
+  border-top: #263A29 solid;
+}
+
+.user-greeting {
+  color: #41644A;
+}
+
+.sign-out-button {
+  border-radius: .3em;
 }
