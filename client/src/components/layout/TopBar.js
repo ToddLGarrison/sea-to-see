@@ -44,9 +44,6 @@ const TopBar = ({ user }) => {
         ) : (
           <ul className="menu">
             <li className="menu-text">
-              <Link to="/">Home</Link>
-            </li>
-            <li className="menu-text">
               <Link to="/user-sessions/new">Sign In</Link>
             </li>
             <li className="menu-text">
