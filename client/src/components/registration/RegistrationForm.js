@@ -27,7 +27,7 @@ const RegistrationForm = () => {
       };
     }
 
-    if (username.trim() == ''){
+    if (username.trim() == '') {
       newErrors = {
         ...newErrors,
         username: "is required",
@@ -100,7 +100,7 @@ const RegistrationForm = () => {
   }
 
   return (
-    <div className="grid-container">
+    <div className="grid-container home-box">
       <h1>Register</h1>
       <form onSubmit={onSubmit}>
         <div>
