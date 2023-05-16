@@ -19,7 +19,7 @@ class UserSeeder {
                 password: "12345",
             }
         ]
-        for (const singleUserData of usersData) {
+        for (const singleUserData of userData) {
             const currentUser = await User.query().findOne({ email: singleUserData.email })
             if (!currentUser) {
                 await User.query().insert(singleUserData)
