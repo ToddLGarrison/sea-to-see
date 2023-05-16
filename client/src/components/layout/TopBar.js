@@ -13,7 +13,7 @@ const TopBar = ({ user }) => {
     <div className="top-bar">
       <div className="top-bar-left">
         <ul className="menu">
-          <li className="menu-text">Sea to See</li>
+          <li className="menu-text sea-to-see">Sea to See</li>
           <li className="menu-text">
               <Link to="/">Home</Link>
             </li>
@@ -34,7 +34,7 @@ const TopBar = ({ user }) => {
                       <Link to="/profile">Profile</Link>
                     </li>
                     <li>
-                      <a key="sign-out"> <SignOutButton /></a>
+                      <a key="sign-out" className="sign-out-button"> <SignOutButton /></a>
                     </li>
                   </ul>
                 )}
