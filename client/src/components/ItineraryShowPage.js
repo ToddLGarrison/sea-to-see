@@ -5,7 +5,7 @@ const ItineraryShowPage = (props) => {
 
     const getItinerary = async () => {
         try {
-            const itineraryId = props.match.params.itineraryId
+            const itineraryId = props.match.params.id
             const response = await fetch(`/api/v1/itineraries/${itineraryId}`)
             if (!response.ok) {
                 const errorMessage = `${response.status} (${response.statusText})`

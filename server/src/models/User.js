@@ -23,7 +23,7 @@ class User extends uniqueFunc(Model) {
     return Bcrypt.compareSync(password, this.cryptedPassword);
   }
 
-  static get relationMapping() {
+  static get relationMappings() {
     const { Itinerary } = require("./index.js")
 
     return {

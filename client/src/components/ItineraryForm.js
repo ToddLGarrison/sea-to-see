@@ -53,7 +53,7 @@ const ItineraryForm = (props) => {
     }
 
     if (shouldRedirect) {
-        return <Redirect push to={`itineraries/${newItinerary.id}`}/>
+        return <Redirect push to={`/itineraries/${newItinerary.id}`}/>
     }
 
     return (

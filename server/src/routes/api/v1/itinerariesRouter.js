@@ -11,7 +11,6 @@ itinerariesRouter.get("/", async (req, res) => {
         const itineraries = await Itinerary.query()
         return res.status(200).json({ itineraries: itineraries})
     } catch(error) {
-        console.log(error)
         return res.status(500).json({ errors: error })
     }
 })
@@ -29,19 +28,17 @@ itinerariesRouter.post("/new", async (req, res) => {
         if (error instanceof ValidationError) {
             res.status(422).json({ errors: error })
         } else {
-            console.log(error)
             return res.status(500).json({ errors: error })
         }
     }
 })
 
-itinerariesRouter.get("/id", async (req, res) => {
+itinerariesRouter.get("/:id", async (req, res) => {
     const itineraryId = req.params.id
     try {
         const showItinerary = await Itinerary.query().findById(itineraryId)
         return res.status(200).json({ itinerary: showItinerary })
     } catch(error) {
-        console.log(error)
         return res.status(500).json({ errors: error })
     }
 })
