@@ -5,6 +5,21 @@ class Itinerary extends Model {
         return "itineraries"
     }
 
+    static get relationMappings() {
+        const { User } = require("./index.js")
+
+        return {
+            user: {
+                relation: Model.BelongsToOneRelation,
+                modelClass: User,
+                join: {
+                    from: "itineraries.userId",
+                    to: "users.id"
+                }
+            }
+        }
+    }
+
     static get jsonSchema() {
         return{
             type: "object",

@@ -9,6 +9,15 @@ const TopBar = ({ user }) => {
     setShowDropDown(!showDropDown)
   };
 
+  let newItineraryLink;
+  if (user) {
+    newItineraryLink = (
+      <li className="menu-text">
+        <Link to="/itineraries/new">Create an Itinerary</Link>
+      </li>
+    );
+  }
+
   return (
     <div className="top-bar">
       <div className="top-bar-left">
@@ -16,31 +25,34 @@ const TopBar = ({ user }) => {
           <li className="menu-text sea-to-see">Sea to See</li>
           <li className="menu-text">
               <Link to="/">Home</Link>
-            </li>
+          </li>
+          {newItineraryLink}
         </ul>
       </div>
 
-      <div className="top-bar-right">
+      <div>
         {user ?(
-          <ul className="dropdown menu">
-            <li>
-              <div className="menu-text">
-                <button onClick={toggleDropDown} className="username user-greeting">
-                    Hello {user?.username}!
-                </button>
-                {showDropDown && (
-                  <ul className="dropdown-menu">
-                    <li className="menu-text">
-                      <Link to="/profile">Profile</Link>
-                    </li>
-                    <li>
-                      <a key="sign-out" className="sign-out-button"> <SignOutButton /></a>
-                    </li>
-                  </ul>
-                )}
-              </div>
-            </li>
-        </ul>
+          <div className="top-bar-right">
+            <ul className="dropdown menu">
+              <li>
+                <div className="menu-text">
+                  <button onClick={toggleDropDown} className="username user-greeting">
+                      Hello {user?.username}!
+                  </button>
+                  {showDropDown && (
+                    <ul className="dropdown-menu">
+                      <li className="menu-text">
+                        <Link to="/profile">Profile</Link>
+                      </li>
+                      <li>
+                        <a key="sign-out" className="sign-out-button"> <SignOutButton /></a>
+                      </li>
+                    </ul>
+                  )}
+                </div>
+              </li>
+            </ul>
+          </div>
         ) : (
           <ul className="menu">
             <li className="menu-text">
