@@ -6,7 +6,7 @@ class Destination extends Model {
     }
 
     static get relationMappings(){
-        const { User, Itinerary } = require("./index.js")
+        const { Itinerary } = require("./index.js")
 
         return {
             itinerary: {
