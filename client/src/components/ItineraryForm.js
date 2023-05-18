@@ -25,7 +25,7 @@ const ItineraryForm = (props) => {
 
     const postItinerary = async (newItineraryData) => {
         try {
-            const response = await fetch(`/api/v1/itineraries/new`, {
+            const response = await fetch(`/api/v1/itineraries`, {
                 method: "POST",
                 headers: new Headers({
                     "Content-Type": "application/json"

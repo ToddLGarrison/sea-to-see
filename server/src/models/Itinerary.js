@@ -17,8 +17,7 @@ class Itinerary extends Model {
                     to: "users.id"
                 }
             },
-
-            destination: {
+            destinations: {
                 relation: Model.HasManyRelation,
                 modelClass: Destination,
                 join: {

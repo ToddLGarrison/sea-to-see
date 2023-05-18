@@ -7,7 +7,7 @@ const HomePage = (props) => {
         <h4>
             Plan <em>your</em> trip
         </h4>
-        <p>Developed by Todd Garrison</p>
+        <p className="developed-by-text">Developed by Todd Garrison</p>
         </>
     )
 }

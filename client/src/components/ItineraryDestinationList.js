@@ -5,8 +5,7 @@ const ItineraryDestinationList = ({ destinations }) => {
     const itineraryDestinationList = destinations.map((destination) => (
         <DestinationTile
             key={destination.id}
-            city={destination.city}
-            description={destination.description}
+            destination={destination}
         />
     ));
 

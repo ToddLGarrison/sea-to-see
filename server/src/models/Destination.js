@@ -24,7 +24,7 @@ class Destination extends Model {
     static get jsonSchema() {
         return {
             type: "object",
-            require: ["city"],
+            required: ["city"],
             properties: {
                 city: { type: "string" },
                 description: { type: "string"}
