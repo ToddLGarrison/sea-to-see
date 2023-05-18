@@ -8,12 +8,6 @@ const usersRouter = new express.Router();
 usersRouter.get("/", async (req, res) => {
   try {
     const itineraries = await req.user.$relatedQuery("itineraries")
-    // const users = await User.query();
-    // const serializedUsers = await Promise.all(
-    //   users.map(async (user) => {
-    //     return await UserSerializer.getSummary(user);
-    //   })
-    // );
     return res.status(200).json({ user: req.user, itineraries: itineraries });
   } catch (error) {
     return res.status(500).json({ errors: error });

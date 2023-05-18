@@ -3,6 +3,7 @@ import objection from "objection"
 import { ValidationError } from "objection"
 import cleanUserInput from "../../../services/cleanUserInput.js"
 import { User, Itinerary } from "../../../models/index.js"
+import destinationRouter from "./destinationRouter.js"
 
 const itinerariesRouter = new express.Router()
 
@@ -15,7 +16,7 @@ itinerariesRouter.get("/", async (req, res) => {
     }
 })
 
-itinerariesRouter.post("/new", async (req, res) => {
+itinerariesRouter.post("/", async (req, res) => {
     const { name, description } = req.body
     const { id } = req.user
     try {
@@ -37,10 +38,15 @@ itinerariesRouter.get("/:id", async (req, res) => {
     const itineraryId = req.params.id
     try {
         const showItinerary = await Itinerary.query().findById(itineraryId)
+        const destinations = await showItinerary.$relatedQuery("destinations")
+        showItinerary.destinations = destinations
         return res.status(200).json({ itinerary: showItinerary })
     } catch(error) {
+        console.log(error)
         return res.status(500).json({ errors: error })
     }
 })
+
+itinerariesRouter.use("/:id/destinations", destinationRouter)
 
 export default itinerariesRouter

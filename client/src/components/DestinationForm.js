@@ -15,7 +15,7 @@ const DestinationForm = ({ postDestination, errors }) => {
     }
 
     const handleSubmit = (event) => {
-        event.prevent()
+        event.preventDefault()
         postDestination(newDestination)
         clearForm()
     }

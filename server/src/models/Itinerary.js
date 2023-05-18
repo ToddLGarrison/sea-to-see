@@ -1,4 +1,3 @@
-const Destination = require("./Destination.js")
 const Model = require("./Model.js")
 
 class Itinerary extends Model {
@@ -24,7 +23,7 @@ class Itinerary extends Model {
                 modelClass: Destination,
                 join: {
                     from: "itineraries.id",
-                    to: "destination.itineraryId"
+                    to: "destinations.itineraryId"
                 }
             }
         }

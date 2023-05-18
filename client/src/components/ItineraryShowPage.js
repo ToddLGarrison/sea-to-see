@@ -13,6 +13,7 @@ const ItineraryShowPage = (props) => {
 
     const [ errors, setErrors] = useState([])
     const [destinations, setDestinations] = useState([])
+
     const postDestination = async (newDestination) => {
         try{
             const itineraryId = props.match.params.id
@@ -36,7 +37,7 @@ const ItineraryShowPage = (props) => {
             } else {
                 const body = await response.json()
                 setErrors([])
-                return setDestinations([body.city, body.description, ...destinations])
+                return setDestinations([body.destinations, ...destinations])
             }
         } catch(error){
             console.error(`Error in Fetch: ${error.message}`)
@@ -78,6 +79,8 @@ const ItineraryShowPage = (props) => {
             />
         )
     }
+
+
 
     return (
         <>
