@@ -25,7 +25,7 @@ const ItineraryForm = (props) => {
 
     const postItinerary = async (newItineraryData) => {
         try {
-            const response = await fetch(`/api/v1/itineraries/new`, {
+            const response = await fetch(`/api/v1/itineraries`, {
                 method: "POST",
                 headers: new Headers({
                     "Content-Type": "application/json"
@@ -57,8 +57,8 @@ const ItineraryForm = (props) => {
     }
 
     return (
-        <>
-            <h2>Create a New Itinerary</h2>
+        <div className="callout form-box">
+            <h2 className="form-title">Create New Itinerary</h2>
             <ErrorList errors={errors}/>
             <form onSubmit={handleSubmit}>
                 <label>
@@ -81,7 +81,7 @@ const ItineraryForm = (props) => {
                 </label>
                 <input className="button" type="submit" value="Create" />
             </form>
-        </>
+        </div>
     )
 }
 

@@ -28,8 +28,8 @@ const DestinationForm = ({ postDestination, errors }) => {
     }
 
     return (
-        <>
-            <h4>Destination</h4>
+        <div className="callout destination-form-box">
+            <h4 className="form-title">Add a Destination</h4>
             <ErrorList errors={errors} />
             <form onSubmit={handleSubmit}>
                 <label>
@@ -44,7 +44,7 @@ const DestinationForm = ({ postDestination, errors }) => {
                     <input className="button" type="submit" value="Add Destination" />
                 </div>
             </form>
-        </>
+        </div>
     )
 
 }

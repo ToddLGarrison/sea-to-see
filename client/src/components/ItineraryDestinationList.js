@@ -5,16 +5,15 @@ const ItineraryDestinationList = ({ destinations }) => {
     const itineraryDestinationList = destinations.map((destination) => (
         <DestinationTile
             key={destination.id}
-            city={destination.city}
-            description={destination.description}
+            destination={destination}
         />
     ));
 
     return (
-        <>
-            <h4>Destinations</h4>
+        <div className="destination-box">
+            <h4 className="form-title">Destinations</h4>
             {itineraryDestinationList}
-        </>
+        </div>
     );
 };
 

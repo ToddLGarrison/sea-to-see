@@ -7,6 +7,10 @@ class ItinerarySerializer {
             serializedItinerary[attribute] = itinerary[attribute]
         }
 
+        const relatedDestinations = await itinerary.$relatedQuery("destinations")
+        
+        serializedItinerary.destinations = relatedDestinations
+
         return serializedItinerary
     }
 }

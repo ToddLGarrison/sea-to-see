@@ -42,7 +42,6 @@ itinerariesRouter.get("/:id", async (req, res) => {
         showItinerary.destinations = destinations
         return res.status(200).json({ itinerary: showItinerary })
     } catch(error) {
-        console.log(error)
         return res.status(500).json({ errors: error })
     }
 })

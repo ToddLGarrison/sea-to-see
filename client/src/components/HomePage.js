@@ -2,13 +2,13 @@ import React from "react";
 
 const HomePage = (props) => {
     return(
-        <>
-        <h2>Sea to See</h2>
-        <h4>
-            Plan <em>your</em> trip
-        </h4>
-        <p>Developed by Todd Garrison</p>
-        </>
+        <div className="primary home-box">
+            <h1 className="secondary header">Sea to See</h1>
+            <h4 className="secondary header">
+                Plan <em>your</em> trip
+            </h4>
+            <p className="developed-by-text">Developed by Todd Garrison</p>
+        </div>
     )
 }
 

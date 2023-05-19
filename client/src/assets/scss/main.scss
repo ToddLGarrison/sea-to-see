@@ -7,6 +7,10 @@
 
 //color palette
 $main-background-color: #F8F8FF;
+$primary-color: #F38181;
+$secondary-color: #FCE38A;
+$accent-color-one: #EAFFD0;
+$accent-color-two: #95E1D3;
 
 *,
 *::before,
@@ -23,12 +27,36 @@ body {
   background-color: $main-background-color;
 }
 
-.sea-to-see {
-  font-family: 'Playfair Display', sans-serif;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lilita One', cursive;
+  color: $primary-color
 }
 
+p {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+a {
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 1.1rem;
+}
+
+.sea-to-see {
+    color: $primary-color;
+}
+.navbar {
+  background-color: $accent-color-two;
+  font-size: .5em;
+}
+
+.developed-by-text{
+  font-family: lato, sans-serif;
+  font-size: .5em;
+}
+
+//navbar & dropdown menu
 .username { 
-  font-family: 'Playfair Display', sans-serif;
+  font-family: 'Lato', sans-serif;
   margin-bottom: 0;
   box-sizing: border-box;
   line-height: 1;
@@ -47,16 +75,90 @@ body {
   z-index: 1;
   list-style-type: none;
   width: auto;
-  border-bottom:#263A29 solid;
+  border-bottom: $accent-color-one solid;
 }
 .dropdown-menu > li {
-  border-top: #263A29 solid;
+  border-top: $accent-color-one solid;
 }
 
 .user-greeting {
-  color: #41644A;
+  color: $primary-color;
 }
 
 .sign-out-button {
   border-radius: .3em;
+}
+
+.user-details {
+  border-bottom: 1px solid $accent-color-two;
+  margin-bottom: 2em;
+}
+
+.itinerary-showpage-list {
+  margin-top: 3em;
+}
+
+.user-itinerary-list {
+  list-style-type: none;
+  text-align: center;
+  color: $accent-color-two;
+  font-family: 'Ubuntu';
+  border: 3px solid $primary-color;
+  width: 30%;
+  margin: .5em auto;
+  background-color: $main-background-color;
+  border-radius: 1em;
+  padding: 1em;
+}
+
+.form-title {
+  text-align: center;
+}
+
+.form-box {
+  border: 3px solid $primary-color;
+  width: 60%;
+  margin: 1em auto;
+  background-color: $main-background-color;
+  border-radius: 1em;
+  padding: 1em;
+}
+
+.itinerary-box{
+  border: 3px solid $primary-color;
+  width: 60%;
+  margin: .5em auto;
+  background-color: $main-background-color;
+  border-radius: 1em;
+  padding: 1em;
+}
+
+.itinerary-description {
+  font-style: italic;
+  text-align: center;
+}
+
+.destination-box{
+  border: 2px solid $primary-color;
+  width: 60%;
+  margin: .5em auto;
+  background-color: $main-background-color;
+  border-radius: 1em;
+  padding: 1em;
+}
+
+.destination-form-box {
+  border: 2px solid $primary-color;
+  width: 60%;
+  margin: 1em auto;
+  background-color: $main-background-color;
+  border-radius: 1em;
+  padding: 1em;
+}
+
+.destination-stop-box {
+  border: 1px solid $primary-color;
+  margin: 1em;
+  border-radius: 1em;
+  padding: .01em;
 }
