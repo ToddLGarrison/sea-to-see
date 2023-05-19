@@ -11,6 +11,7 @@ import HomePage from "./HomePage";
 import UserProfilePage from "./UserProfilePage";
 import ItineraryForm from "./ItineraryForm";
 import ItineraryShowPage from "./ItineraryShowPage";
+import UserItineraryList from "./UserItineraryList";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -36,7 +37,9 @@ const App = (props) => {
         <Route exact path="/user-sessions/new" component={SignInForm} />
         <AuthenticatedRoute exact path="/profile" component={UserProfilePage} user={currentUser} />
         <AuthenticatedRoute exact path="/itineraries/new" component={ItineraryForm} user={currentUser} />
-        <Route exact path="/itineraries/:id" component={ItineraryShowPage} user={currentUser} />
+        <Route exact path="/itineraries/:id" render={(props) => <ItineraryShowPage user={currentUser} {...props}/>}/>
+        <Route exact path="/itineraries" render={(props) => <UserItineraryList user={currentUser} {...props}/>}/>
+        
       </Switch>
     </Router>
   );

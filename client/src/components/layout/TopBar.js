@@ -12,9 +12,17 @@ const TopBar = ({ user }) => {
   let newItineraryLink;
   if (user) {
     newItineraryLink = (
-      <li className="menu-text">
-        <Link to="/itineraries/new">Create an Itinerary</Link>
-      </li>
+      <>
+        <li className="menu-text">
+          <Link to="/">Home</Link>
+        </li>
+        <li className="menu-text">
+          <Link to="/itineraries/new">Create an Itinerary</Link>
+        </li>
+        <li className="menu-text">
+          <Link to="/itineraries">Your Itinerary List</Link>
+        </li>
+      </>
     );
   }
 
@@ -23,9 +31,6 @@ const TopBar = ({ user }) => {
       <div className="top-bar-left">
         <ul className="menu">
           <li className="menu-text sea-to-see">Sea to See</li>
-          <li className="menu-text">
-              <Link to="/">Home</Link>
-          </li>
           {newItineraryLink}
         </ul>
       </div>
