@@ -18,7 +18,6 @@ class Destination extends Model {
                 }
             }
         }
-
     }
 
     static get jsonSchema() {
@@ -31,7 +30,6 @@ class Destination extends Model {
             }
         }
     }
-
 }
 
 module.exports = Destination

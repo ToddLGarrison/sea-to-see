@@ -7,7 +7,7 @@ const ItineraryShowPage = (props) => {
     const [itinerary, setItinerary] = useState({
         name:"",
         description: "",
-        reviews: []
+        destinations: []
 
     })
 
@@ -79,8 +79,6 @@ const ItineraryShowPage = (props) => {
             />
         )
     }
-
-
 
     return (
         <>
