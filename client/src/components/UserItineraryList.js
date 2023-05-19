@@ -25,16 +25,17 @@ const UserItineraryList = (props) => {
 
     const userItineraryListItems = userItineraries.map(itineraryObject => {
         return (
-            <li key={itineraryObject.id}>
+            <li className="user-itinerary-list callout" key={itineraryObject.id}>
                 <h4><Link to={`/itineraries/${itineraryObject.id}`}>{itineraryObject.name}</Link></h4>
             </li>
         )
     })
 
     return (
-        <>
+        <div className="itinerary-showpage-list">
+            <h2 className="form-title">My Itinerary List</h2>
             {userItineraryListItems}
-        </>
+        </div>
     )
 }
 export default UserItineraryList

@@ -10,10 +10,10 @@ const ItineraryDestinationList = ({ destinations }) => {
     ));
 
     return (
-        <>
-            <h4>Destinations</h4>
+        <div className="destination-box">
+            <h4 className="form-title">Destinations</h4>
             {itineraryDestinationList}
-        </>
+        </div>
     );
 };
 

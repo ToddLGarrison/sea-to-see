@@ -17,10 +17,10 @@ const TopBar = ({ user }) => {
           <Link to="/">Home</Link>
         </li>
         <li className="menu-text">
-          <Link to="/itineraries/new">Create an Itinerary</Link>
+          <Link to="/itineraries/new">Create Itinerary</Link>
         </li>
         <li className="menu-text">
-          <Link to="/itineraries">Your Itinerary List</Link>
+          <Link to="/itineraries">Your Itineraries</Link>
         </li>
       </>
     );

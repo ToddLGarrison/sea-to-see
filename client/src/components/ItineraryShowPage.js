@@ -67,7 +67,9 @@ const ItineraryShowPage = (props) => {
     
     let descriptionSection
     if (itinerary.description) {
-        descriptionSection = <p>Itinerary description: {itinerary.description}</p>
+        descriptionSection = <div className="itinerary-description">
+            {itinerary.description}
+            </div>
     }
 
     let destinationForm
@@ -82,11 +84,12 @@ const ItineraryShowPage = (props) => {
 
     return (
         <>
-            <h2>Your Itinerary</h2>
-            <h3>{itinerary.name}</h3>
-            {descriptionSection}
-            <ItineraryDestinationList destinations={destinations} />
-            {destinationForm}
+            <div className="itinerary-box">
+                <h3 className="form-title">My {itinerary.name} Itinerary</h3>
+                {descriptionSection}
+                <ItineraryDestinationList destinations={destinations} />
+                {destinationForm}
+            </div>
         </>
     )
 }
