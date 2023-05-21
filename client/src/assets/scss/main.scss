@@ -124,20 +124,6 @@ a {
   padding: 1em;
 }
 
-.itinerary-box{
-  border: 3px solid $primary-color;
-  width: 60%;
-  margin: .5em auto;
-  background-color: $main-background-color;
-  border-radius: 1em;
-  padding: 1em;
-}
-
-.itinerary-description {
-  font-style: italic;
-  text-align: center;
-}
-
 .destination-box{
   border: 2px solid $primary-color;
   width: 60%;
@@ -161,4 +147,67 @@ a {
   margin: 1em;
   border-radius: 1em;
   padding: .01em;
+}
+
+//itinerary card
+.equal-height-cards {
+  .cell {
+    display: flex;
+    align-items: stretch;
+  }
+}
+
+.card {
+  background-color: #E8AA9B;
+  display: flex;
+  align-items: stretch;
+
+  &:hover {
+    background-color: #769ABE;
+    .card-divider {
+      background-color: #1A385A;
+      color: #FFFFFF;
+    }
+  }
+
+  .card-divider {
+    display: block;
+    background-color: #E46F44;
+    text-align: center;
+    margin-bottom: 0em;
+  }
+
+  .itinerary-description {
+    font-style: italic;
+    text-align: center;
+  }
+}
+
+.itinerary-box{
+  border: 3px solid $primary-color;
+  width: 60%;
+  margin: .5em auto;
+  background-color: $main-background-color;
+  border-radius: 1em;
+  padding: 1em;
+}
+
+.home-box{
+  position: relative;
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+.homepage-photo{
+  position: relative;
+  width:100%;
+}
+
+.homepage-text {
+  position: absolute;
+  font-style: italic;
+  font-weight: lighter;
+  font-size: 6vw;
+  top: 8%;
+  left: 5%;
 }

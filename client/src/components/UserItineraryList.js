@@ -32,7 +32,7 @@ const UserItineraryList = (props) => {
     })
 
     return (
-        <div className="itinerary-showpage-list">
+        <div className="itinerary-showpage-list grid">
             <h2 className="form-title">My Itinerary List</h2>
             {userItineraryListItems}
         </div>
