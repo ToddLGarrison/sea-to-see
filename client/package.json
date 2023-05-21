@@ -25,6 +25,7 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.6.2",
+    "@googlemaps/js-api-loader": "^1.15.2",
     "@types/react-router-dom": "^5.3.3",
     "babel-loader": "~8.1",
     "css-loader": "^5.0.0",

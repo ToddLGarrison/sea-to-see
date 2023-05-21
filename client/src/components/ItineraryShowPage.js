@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import DestinationForm from "./DestinationForm";
 import ItineraryDestinationList from "./ItineraryDestinationList";
 import translateServerErrors from "../services/translateServerErrors"
+import GoogleMap from "./maps/GoogleMap";
 
 const ItineraryShowPage = (props) => {
     const [itinerary, setItinerary] = useState({
@@ -89,6 +90,10 @@ const ItineraryShowPage = (props) => {
                 {descriptionSection}
                 <ItineraryDestinationList destinations={destinations} />
                 {destinationForm}
+                <div>
+                    <GoogleMap />
+                </div>
+
             </div>
         </>
     )
