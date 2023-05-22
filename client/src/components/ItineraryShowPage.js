@@ -83,14 +83,14 @@ const ItineraryShowPage = (props) => {
     }
 
     return (
-        <>
-            <div className="itinerary-box">
+        <div className="itinerary-box">
                 <h3 className="form-title">My {itinerary.name} Itinerary</h3>
-                {descriptionSection}
+                    {descriptionSection}
+            <div>
                 <ItineraryDestinationList destinations={destinations} />
                 {destinationForm}
             </div>
-        </>
+        </div>
     )
 }
 
