@@ -13,15 +13,15 @@ const MapSearch = (props) => {
 
     return (
         <>
-        <label htmlFor="search">
-            <input
-            id="search"
-            type="text"
-            onChange={handleChange}
-            />
-        </label>
+            <label htmlFor="search">
+                <input
+                id="search"
+                type="text"
+                onChange={handleChange}
+                />
+            </label>
 
-        <button className="button" onClick={handleSearch}>Discover!</button>
+            <button className="button" onClick={handleSearch}>Discover!</button>
         </>
     )
 }

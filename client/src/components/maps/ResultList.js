@@ -14,7 +14,7 @@ const ResultList = (props) => {
 
     return (
         <>
-        {results}
+            {results}
         </>
     )
 }
