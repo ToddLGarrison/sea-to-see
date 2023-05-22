@@ -12,7 +12,7 @@ const ItineraryShowPage = (props) => {
 
     })
 
-    const [ errors, setErrors] = useState([])
+    const [errors, setErrors] = useState([])
     const [destinations, setDestinations] = useState([])
 
     const postDestination = async (newDestination) => {

@@ -4,6 +4,7 @@ const { ValidationError } = objection
 import { Destination } from "../../../models/index.js"
 import cleanUserInput from "../../../services/cleanUserInput.js"
 import DestinationSerializer from "../../../serializers/DestinationSerializer.js"
+import stopRouter from "./stopRouter.js"
 
 const destinationRouter = new express.Router({ mergeParams: true })
 
@@ -15,10 +16,7 @@ destinationRouter.post("/", async (req, res) => {
     const destinationDataWithId = {...body, itineraryId: itineraryIdParams, userId: user.id}
     console.log(destinationDataWithId)
     // console.log(destinationDataWithId)
-    // use this exact data in the yarn console
 
-    //const user = req.user
-    //add id of user to insertandFetch
     try {
         const newDestination = await Destination.query().insertAndFetch(destinationDataWithId)
         const destinationSerialized = DestinationSerializer.destinationDetails(newDestination)
@@ -33,5 +31,7 @@ destinationRouter.post("/", async (req, res) => {
     }
 
 })
+
+destinationRouter.use("/:id/stops", stopRouter)
 
 export default destinationRouter

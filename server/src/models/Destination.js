@@ -6,7 +6,7 @@ class Destination extends Model {
     }
 
     static get relationMappings(){
-        const { Itinerary } = require("./index.js")
+        const { Itinerary, Stop } = require("./index.js")
 
         return {
             itinerary: {
@@ -15,6 +15,15 @@ class Destination extends Model {
                 join: {
                     from: "destinations.itineraryId",
                     to: "itineraries.id"
+                }
+            },
+
+            stop: {
+                relation: Model.HasManyRelation,
+                modelClass: Stop,
+                join: {
+                    from: "destinations.id",
+                    to: "stop.destinationId"
                 }
             }
         }

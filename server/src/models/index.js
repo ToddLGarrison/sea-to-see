@@ -2,5 +2,6 @@
 const User = require("./User.js")
 const Itinerary = require("./Itinerary.js")
 const Destination = require("./Destination.js")
+const Stop = require("./Stop.js")
 
-module.exports = {User, Itinerary, Destination};
+module.exports = {User, Itinerary, Destination, Stop};

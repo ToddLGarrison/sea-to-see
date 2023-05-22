@@ -17,4 +17,4 @@ const ItineraryDestinationList = ({ destinations }) => {
     );
 };
 
-export default ItineraryDestinationList;  
+export default ItineraryDestinationList;    
