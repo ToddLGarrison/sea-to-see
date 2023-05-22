@@ -30,7 +30,7 @@ const TopBar = ({ user }) => {
     <div className="top-bar">
       <div className="top-bar-left">
         <ul className="menu">
-          <li className="menu-text sea-to-see">Sea to See</li>
+          <li className="sea-to-see">Sea to See</li>
           {newItineraryLink}
         </ul>
       </div>

@@ -34,7 +34,9 @@ const UserItineraryList = (props) => {
     return (
         <div className="itinerary-showpage-list">
             <h2 className="form-title">My Itinerary List</h2>
-            {userItineraryListItems}
+            <div className="grid-x grid-margin-x">
+                {userItineraryListItems}
+            </div>
         </div>
     )
 }

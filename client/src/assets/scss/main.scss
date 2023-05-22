@@ -38,19 +38,16 @@ p {
 
 a {
   font-family: 'Montserrat', sans-serif;
-  margin-bottom: 1.1rem;
+  color: $accent-color-two;
 }
 
 .sea-to-see {
-    color: $primary-color;
+  color: $primary-color;
+  font-family: "Lilita One";
+  font-size: xx-large;
 }
 .navbar {
   background-color: $accent-color-two;
-  font-size: .5em;
-}
-
-.developed-by-text{
-  font-family: lato, sans-serif;
   font-size: .5em;
 }
 
@@ -63,8 +60,7 @@ a {
   text-decoration: none;
   display: block;
   font-weight: bold;
-  margin-top: .6rem;
-  margin-right: 20px;
+  margin-right: .5em;
   padding: 11.2px, 16px;
 }
 
@@ -75,10 +71,10 @@ a {
   z-index: 1;
   list-style-type: none;
   width: auto;
-  border-bottom: $accent-color-one solid;
+  border-bottom: $accent-color-two solid;
 }
 .dropdown-menu > li {
-  border-top: $accent-color-one solid;
+  border-top: $accent-color-two solid;
 }
 
 .user-greeting {
@@ -87,6 +83,28 @@ a {
 
 .sign-out-button {
   border-radius: .3em;
+}
+
+//homepage
+
+.home-box{
+  position: relative;
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+.homepage-photo{
+  position: relative;
+  width:100%;
+}
+
+.homepage-text {
+  position: absolute;
+  font-style: italic;
+  font-weight: lighter;
+  font-size: 6vw;
+  top: 8%;
+  left: 5%;
 }
 
 .user-details {
@@ -106,9 +124,14 @@ a {
   border: 3px solid $primary-color;
   width: 30%;
   margin: .5em auto;
-  background-color: $main-background-color;
+  background-color: $primary-color;
   border-radius: 1em;
   padding: 1em;
+
+  &:hover {
+    background-color: #769ABE;
+    border: #769ABE;
+  }
 }
 
 .form-title {
@@ -122,20 +145,6 @@ a {
   background-color: $main-background-color;
   border-radius: 1em;
   padding: 1em;
-}
-
-.itinerary-box{
-  border: 3px solid $primary-color;
-  width: 60%;
-  margin: .5em auto;
-  background-color: $main-background-color;
-  border-radius: 1em;
-  padding: 1em;
-}
-
-.itinerary-description {
-  font-style: italic;
-  text-align: center;
 }
 
 .destination-box{
@@ -157,8 +166,36 @@ a {
 }
 
 .destination-stop-box {
+  text-align: left;
   border: 1px solid $primary-color;
   margin: 1em;
   border-radius: 1em;
-  padding: .01em;
+  padding: .2em;
+}
+
+//itinerary card
+  .itinerary-description {
+    font-style: italic;
+    text-align: center;
+  }
+
+.card-section {
+  text-align: center;
+  display:flex;
+  align-items: stretch;
+}
+
+.itinerary-box{
+  border: 3px solid $primary-color;
+  width: 60%;
+  margin: .5em auto;
+  background-color: $main-background-color;
+  border-radius: 1em;
+  padding: 1em;
+}
+
+//developed by
+.developed-by-text{
+  font-family: lato, sans-serif;
+  font-size: .8em;
 }
