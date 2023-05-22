@@ -4,7 +4,7 @@ const DestinationTile = props => {
     const { city, description, id,  } = props.destination
     return (
         <div className="destination-stop-box">
-            <p>{city} - {description}</p>
+            <p>{id}: {city} - {description}</p>
         </div>
     )
 }
