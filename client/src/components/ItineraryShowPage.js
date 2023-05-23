@@ -3,6 +3,7 @@ import DestinationForm from "./DestinationForm";
 import ItineraryDestinationList from "./ItineraryDestinationList";
 import translateServerErrors from "../services/translateServerErrors"
 import GoogleMap from "./maps/GoogleMap";
+import { Redirect } from "react-router-dom";
 
 const ItineraryShowPage = (props) => {
     const [itinerary, setItinerary] = useState({
@@ -14,6 +15,7 @@ const ItineraryShowPage = (props) => {
 
     const [ errors, setErrors] = useState([])
     const [destinations, setDestinations] = useState([])
+    const [shouldRedirect, setShouldRedirect] = useState(false)
 
     const postDestination = async (newDestination) => {
         try{
@@ -83,6 +85,20 @@ const ItineraryShowPage = (props) => {
         )
     }
 
+    let editButton;
+
+    const editItinerary = () => {
+        setShouldRedirect({ status: true, newItineraryId: itinerary?.id })
+    }
+
+    if(props.user?.id === itinerary.userId){
+        editButton = <button className="button" onClick={editItinerary}>Edit/Delete Itinerary</button>
+    }
+
+    if(shouldRedirect){
+        return <Redirect push to={`/itineraries/${shouldRedirect.newItineraryId}/edit`}/>
+    }
+
     return (
         <div className="itinerary-box">
                 <h3 className="form-title">My {itinerary.name} Itinerary</h3>
@@ -93,8 +109,8 @@ const ItineraryShowPage = (props) => {
                 <div>
                     <GoogleMap />
                 </div>
-
             </div>
+            {editButton}
         </div>
     )
 }
