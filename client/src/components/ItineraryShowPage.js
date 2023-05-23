@@ -9,6 +9,8 @@ const ItineraryShowPage = (props) => {
     const [itinerary, setItinerary] = useState({
         name:"",
         description: "",
+        departureDate: "",
+        returnDate: "",
         destinations: []
 
     })
@@ -75,6 +77,14 @@ const ItineraryShowPage = (props) => {
             </div>
     }
 
+    let dateSection
+    if (itinerary.departureDate) {
+        dateSection = <div className="itinerary-description">
+            Dates: {itinerary.departureDate} -{itinerary.returnDate}
+            </div>
+    }
+
+
     let destinationForm
     if (props.user) {
         destinationForm = (
@@ -102,7 +112,9 @@ const ItineraryShowPage = (props) => {
     return (
         <div className="itinerary-box">
                 <h3 className="form-title">My {itinerary.name} Itinerary</h3>
-                    {descriptionSection}
+                {dateSection}
+                {descriptionSection}
+                
             <div>
                 <ItineraryDestinationList destinations={destinations} />
                 {destinationForm}

@@ -24,7 +24,7 @@ const EditDeleteItineraryForm = props => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        patchItinerary
+        patchItinerary()
     }
 
     const getItinerary = async () => {
@@ -65,7 +65,12 @@ const EditDeleteItineraryForm = props => {
                 headers: new Headers({
                     "content-Type": "application/json"
                 }),
-                body: JSON.stringify({ name: newItineraryName, description: newItineraryDescription, departureDate: newItineraryDepartureDate, returnDateDate: newItineraryReturnDate })
+                body: JSON.stringify({ 
+                    name: newItineraryName, 
+                    description: newItineraryDescription, 
+                    departureDate: newItineraryDepartureDate, 
+                    returnDate: newItinerary.returnDate 
+                })
             })
             if(!response.ok) {
                 if (response.status == 422) {

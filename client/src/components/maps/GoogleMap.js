@@ -18,7 +18,6 @@ const GoogleMap = (props) => {
     useEffect(() => {
         setError("")
         loader.load().then(() => {
-        // const boston = { lat: 42.361, lng: -71.057 };
             if(navigator.geolocation){
                 navigator.geolocation.getCurrentPosition(
                     (position) => {

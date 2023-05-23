@@ -17,11 +17,11 @@ itinerariesRouter.get("/", async (req, res) => {
 })
 
 itinerariesRouter.post("/", async (req, res) => {
-    const { name, description } = req.body
+    const { name, description, departureDate, returnDate } = req.body
     const { id } = req.user
     try {
         const postingUser = await User.query().findById(id)
-        const cleanItinerary = cleanUserInput({ name, description })
+        const cleanItinerary = cleanUserInput({ name, description, departureDate, returnDate })
         const newItinerary = await postingUser.$relatedQuery("itineraries").insertAndFetch(cleanItinerary)
 
         return res.status(201).json({ itineraries: newItinerary })
@@ -47,7 +47,7 @@ itinerariesRouter.get("/:id", async (req, res) => {
 })
 
 itinerariesRouter.patch("/:id", async (req, res)=> {
-    const { name, description } = req.body
+    const { name, description, departureDate, returnDate } = req.body
     const { id } = req.user
     const itineraryId = req.params.id
 
@@ -64,7 +64,6 @@ itinerariesRouter.patch("/:id", async (req, res)=> {
         if (error instanceof ValidationError) {
             res.status(422).json({ errors: error })
         } else{ 
-            console.log(error)
             return res.status(500).json({ errors: error })
         }
     }
@@ -87,7 +86,6 @@ itinerariesRouter.delete("/:id", async (req, res) => {
         if (error instanceof ValidationError) {
             res.status(422).json({ errors: error });
         } else {
-            console.log(error);
             return res.status(500).json({ errors: error });
         }
         }
