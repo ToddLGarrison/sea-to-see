@@ -13,12 +13,7 @@ destinationRouter.post("/", async (req, res) => {
     const itineraryIdParams = req.params.id
     const user = req.user
     const destinationDataWithId = {...body, itineraryId: itineraryIdParams, userId: user.id}
-    console.log(destinationDataWithId)
-    // console.log(destinationDataWithId)
-    // use this exact data in the yarn console
-
-    //const user = req.user
-    //add id of user to insertandFetch
+    
     try {
         const newDestination = await Destination.query().insertAndFetch(destinationDataWithId)
         const destinationSerialized = DestinationSerializer.destinationDetails(newDestination)
@@ -28,7 +23,6 @@ destinationRouter.post("/", async (req, res) => {
         if (error instanceof ValidationError) {
             return res.status(422).json({ errors: error })
         }
-        console.log(error)
         return res.status(500).json({ errors: error })
     }
 

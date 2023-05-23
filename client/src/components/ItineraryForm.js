@@ -8,7 +8,9 @@ const ItineraryForm = (props) => {
     const [shouldRedirect, setShouldRedirect] = useState(false)
     const [newItinerary, setNewItinerary] = useState({
         name: "",
-        description: ""
+        description: "",
+        departure: "",
+        return: ""
     })
 
     const handleInputChange = (event) => {
@@ -77,6 +79,24 @@ const ItineraryForm = (props) => {
                             name="description"
                             onChange={handleInputChange}
                             value={newItinerary.description}
+                        />
+                </label>
+                <label>
+                    Departure Date:
+                        <input
+                            type="text"
+                            name="departureDate"
+                            onChange={handleInputChange}
+                            value={newItinerary.departureDate}
+                        />
+                </label>
+                <label>
+                    Return:
+                        <input
+                            type="text"
+                            name="returnDate"
+                            onChange={handleInputChange}
+                            value={newItinerary.returnDate}
                         />
                 </label>
                 <input className="button" type="submit" value="Create" />
