@@ -1,10 +1,10 @@
 import React from "react";
 
 const DestinationTile = props => {
-    const { city, description, id,  } = props.destination
+    const { city, description,  } = props.destination
     return (
         <div className="destination-stop-box">
-            <p>{id}: {city} - {description}</p>
+            <p>{city} - {description}</p>
         </div>
     )
 }

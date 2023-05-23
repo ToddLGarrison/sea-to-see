@@ -87,7 +87,7 @@ const GoogleMap = (props) => {
             <MapSearch setSearchQuery={setSearchQuery} />
             <p className="error">{error}</p>
             <div id="map" style={{height:400}}></div>
-            <ResultList searchResults={searchResults} />
+            <ResultList searchResults={searchResults} addGoogleDestinationToList={props.addGoogleDestinationToList} />
         </>
     )
 }

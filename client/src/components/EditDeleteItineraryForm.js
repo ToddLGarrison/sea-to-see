@@ -69,7 +69,7 @@ const EditDeleteItineraryForm = props => {
                     name: newItineraryName, 
                     description: newItineraryDescription, 
                     departureDate: newItineraryDepartureDate, 
-                    returnDate: newItinerary.returnDate 
+                    returnDate: newItineraryReturnDate
                 })
             })
             if(!response.ok) {
