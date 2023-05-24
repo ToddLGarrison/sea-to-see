@@ -49,6 +49,29 @@ const ItineraryShowPage = (props) => {
         }
     }
 
+    const deleteDestination = async (destinationId) => {
+        try {
+            const itineraryId = props.match.params.id;
+            const response = await fetch(
+                `/api/v1/itineraries/${itineraryId}/destinations/${destinationId}`,
+                {
+                method: "DELETE",
+                headers: new Headers({
+                    "Content-Type": "application/json",
+                }),
+                }
+            );
+            if (!response.ok) {
+                const errorMessage = `${response.status} (${response.statusText})`;
+                const error = new Error(errorMessage);
+                throw error;
+            }
+            setDestinations(destinations.filter((destination) => destination.id !== destinationId));
+            } catch (error) {
+            console.error(`Error in Fetch: ${error.message}`);
+            }
+        };
+
     const getItinerary = async () => {
         try {
             const itineraryId = props.match.params.id
@@ -98,6 +121,7 @@ const ItineraryShowPage = (props) => {
             console.error(`Error in Fetch ${error.message}`)
         }
     }
+
     
     let descriptionSection
     if (itinerary.description) {
@@ -152,7 +176,7 @@ const ItineraryShowPage = (props) => {
             </div>
                 
             <div className="itinerary-show-page-box">
-                <ItineraryDestinationList destinations={destinations} />
+                <ItineraryDestinationList destinations={destinations} deleteDestination={deleteDestination} />
                 {destinationForm}
             </div>
 

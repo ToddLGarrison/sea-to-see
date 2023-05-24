@@ -55,7 +55,12 @@ itinerariesRouter.patch("/:id", async (req, res)=> {
         const itineraryToUpdate = await Itinerary.query().findById(itineraryId)
         if(id === itineraryToUpdate.userId) {
             const cleanItinerary = cleanUserInput({ name, description, departureDate, returnDate })
-            const updateItinerary = await Itinerary.query().patchAndFetchById(itineraryId, {name: cleanItinerary.name, description: cleanItinerary.description, departureDate: cleanItinerary.departureDate, returnDate: cleanItinerary.returnDate })
+            const updateItinerary = await Itinerary.query().patchAndFetchById(itineraryId, {
+                name: cleanItinerary.name, 
+                description: cleanItinerary.description, 
+                departureDate: cleanItinerary.departureDate, 
+                returnDate: cleanItinerary.returnDate 
+            })
             return res.status(201).json({ itinerary: updateItinerary })
         } else {
             return res.status(404).json({ status: "Update Failed"})
