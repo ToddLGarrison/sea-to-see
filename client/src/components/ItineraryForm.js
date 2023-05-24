@@ -99,7 +99,7 @@ const ItineraryForm = (props) => {
                             value={newItinerary.returnDate}
                         />
                 </label>
-                <input className="button" type="submit" value="Create" />
+                <input className="button travel-button" type="submit" value="Create" />
             </form>
         </div>
     )

@@ -21,7 +21,7 @@ const MapSearch = (props) => {
                 />
             </label>
 
-            <button className="button" onClick={handleSearch}>Discover!</button>
+            <button className="button travel-button" onClick={handleSearch}>Discover!</button>
         </>
     )
 }

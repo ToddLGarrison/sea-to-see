@@ -1,16 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const ItineraryTile = props => {
-    const { name, description, id } = props.itinerary
+    const { name, description, departureDate, returnDate, id } = props.itinerary
     return (
-        <div className="cell small-12 medium-6 large-3">
-            <div>
-                <Link to={`/itineraries/${id}`} >{name}</Link>
+            <div className="user-itinerary-list callout">
+                <a href={`/itineraries/${props.itinerary.id}`}>
+                    <h4>{name}</h4>
+                    <p className="itinerary-description">{description}</p>
+                    <p>{departureDate}-{returnDate}</p>
+                </a>
             </div>
-            <p>{description}</p>
-        </div>
     )
 }
 
 export default ItineraryTile
+

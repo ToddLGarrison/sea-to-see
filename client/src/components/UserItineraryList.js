@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import ItineraryTile from "./ItineraryTile";
 
 const UserItineraryList = (props) => {
     const [userItineraries, setUserItineraries] = useState([])
@@ -25,9 +25,10 @@ const UserItineraryList = (props) => {
 
     const userItineraryListItems = userItineraries.map(itineraryObject => {
         return (
-            <li className="user-itinerary-list callout" key={itineraryObject.id}>
-                <h4><Link to={`/itineraries/${itineraryObject.id}`}>{itineraryObject.name}</Link></h4>
-            </li>
+            <ItineraryTile
+                key={itineraryObject.id} 
+                itinerary={itineraryObject}
+            />
         )
     })
 

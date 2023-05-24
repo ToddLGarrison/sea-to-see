@@ -27,7 +27,7 @@ const TopBar = ({ user }) => {
   }
 
   return (
-    <div className="top-bar">
+    <div className="top-bar navbar-border">
       <div className="top-bar-left">
         <ul className="menu">
           <li className="sea-to-see">Sea to See</li>

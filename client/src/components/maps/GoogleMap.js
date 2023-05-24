@@ -29,12 +29,12 @@ const GoogleMap = (props) => {
                         const request = {
                             query: searchQuery,
                             location: userLocation,
-                            radius: "800"
+                            radius: "600"
                         }
 
                         const map = new google.maps.Map(document.getElementById("map"), {
                             center: userLocation,
-                            zoom: 10,
+                            zoom: 13,
                         })
 
                         const service = new google.maps.places.PlacesService(map);
@@ -82,13 +82,13 @@ const GoogleMap = (props) => {
     }, [searchQuery])
 
     return (
-        <>
+        <div className="google-map-box">
             <h1>Search Map</h1>
             <MapSearch setSearchQuery={setSearchQuery} />
             <p className="error">{error}</p>
             <div id="map" style={{height:400}}></div>
             <ResultList searchResults={searchResults} addGoogleDestinationToList={props.addGoogleDestinationToList} />
-        </>
+        </div>
     )
 }
 

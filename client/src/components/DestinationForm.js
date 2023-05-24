@@ -41,7 +41,7 @@ const DestinationForm = ({ postDestination, errors }) => {
                     <input type="text" name="description" onChange={handleChange} value={newDestination.description}/>
                 </label>
                 <div className="button-group">
-                    <input className="button" type="submit" value="Add Destination" />
+                    <input className="button travel-button" type="submit" value="Add Destination" />
                 </div>
             </form>
         </div>
