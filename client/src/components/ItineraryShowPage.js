@@ -131,7 +131,7 @@ const ItineraryShowPage = (props) => {
     }
 
     if(props.user?.id === itinerary.userId){
-        editButton = <button className="button" onClick={editItinerary}>Edit/Delete Itinerary</button>
+        editButton = <button className="button travel-button" onClick={editItinerary}>Edit/Delete Itinerary</button>
     }
 
     if(shouldRedirect){
@@ -140,18 +140,25 @@ const ItineraryShowPage = (props) => {
 
     return (
         <div className="itinerary-box">
+            <div className="itinerary-header-box">
                 <h3 className="form-title">My {itinerary.name} Itinerary</h3>
-                {dateSection}
-                {descriptionSection}
+                <div className="date-description-section">
+                    {dateSection}
+                    {descriptionSection}
+                </div>
+                    <div className="edit-itinerary-button">
+                        {editButton}
+                    </div>
+            </div>
                 
-            <div>
+            <div className="itinerary-show-page-box">
                 <ItineraryDestinationList destinations={destinations} />
                 {destinationForm}
-                <div>
-                    <GoogleMap addGoogleDestinationToList={addGoogleDestinationToList} />
-                </div>
             </div>
-            {editButton}
+
+            <div className="itinerary-google-show-page-box">
+                <GoogleMap addGoogleDestinationToList={addGoogleDestinationToList} />
+            </div>
         </div>
     )
 }
