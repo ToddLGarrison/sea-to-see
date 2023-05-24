@@ -69,6 +69,35 @@ const ItineraryShowPage = (props) => {
     useEffect(() =>{
         getItinerary()
     }, [])
+
+    const addGoogleDestinationToList = async (googleDestination) => {
+        try {
+            const itineraryId = props.match.params.id
+            const response = await fetch(`/api/v1/itineraries/${itineraryId}/destinations`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body:JSON.stringify(googleDestination)
+            })
+            if(!response.ok){
+                if(response.status === 422) {
+                    const errorBody = await response.json()
+                    const newErrors = translateServerErrors(errorBody.errors.data)
+                    return setErrors(newErrors)
+                } else {
+                    const errorMessage = `${response.status} (${response.statusText})`
+                    const error = new Error(errorMessage)
+                    throw(error)
+                }
+            } else {
+                const body = await response.json()
+                setDestinations((destinations) => [...destinations, body.destination])
+            }
+        } catch (error) {
+            console.error(`Error in Fetch ${error.message}`)
+        }
+    }
     
     let descriptionSection
     if (itinerary.description) {
@@ -80,7 +109,7 @@ const ItineraryShowPage = (props) => {
     let dateSection
     if (itinerary.departureDate) {
         dateSection = <div className="itinerary-description">
-            Dates: {itinerary.departureDate} -{itinerary.returnDate}
+            Dates: {itinerary.departureDate}-{itinerary.returnDate}
             </div>
     }
 
@@ -119,7 +148,7 @@ const ItineraryShowPage = (props) => {
                 <ItineraryDestinationList destinations={destinations} />
                 {destinationForm}
                 <div>
-                    <GoogleMap />
+                    <GoogleMap addGoogleDestinationToList={addGoogleDestinationToList} />
                 </div>
             </div>
             {editButton}

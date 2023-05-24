@@ -8,6 +8,7 @@ const ResultList = (props) => {
         <ResultTile
             key={result.place_id}
             result={result}
+            addGoogleDestinationToList={props.addGoogleDestinationToList}
         />
         )
     })
