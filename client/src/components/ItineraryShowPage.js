@@ -49,26 +49,6 @@ const ItineraryShowPage = (props) => {
         }
     }
 
-    const getItinerary = async () => {
-        try {
-            const itineraryId = props.match.params.id
-            const response = await fetch(`/api/v1/itineraries/${itineraryId}`)
-            if (!response.ok) {
-                const errorMessage = `${response.status} (${response.statusText})`
-                const error = new Error(errorMessage)
-                throw(error)
-            }
-            const responseBody = await response.json()
-            setItinerary(responseBody.itinerary)
-            setDestinations(responseBody.itinerary.destinations)
-        } catch(error){
-            console.error(`Error in Fetch: ${error.message}`)
-        }
-    }
-
-    useEffect(() =>{
-        getItinerary()
-    }, [])
 
     const addGoogleDestinationToList = async (googleDestination) => {
         try {
@@ -92,12 +72,34 @@ const ItineraryShowPage = (props) => {
                 }
             } else {
                 const body = await response.json()
-                setDestinations((destinations) => [...destinations, body.destination])
+                setErrors([])
+                return setDestinations([body.destinations, ...destinations])
             }
         } catch (error) {
             console.error(`Error in Fetch ${error.message}`)
         }
     }
+
+    const getItinerary = async () => {
+        try {
+            const itineraryId = props.match.params.id
+            const response = await fetch(`/api/v1/itineraries/${itineraryId}`)
+            if (!response.ok) {
+                const errorMessage = `${response.status} (${response.statusText})`
+                const error = new Error(errorMessage)
+                throw(error)
+            }
+            const responseBody = await response.json()
+            setItinerary(responseBody.itinerary)
+            setDestinations(responseBody.itinerary.destinations)
+        } catch(error){
+            console.error(`Error in Fetch: ${error.message}`)
+        }
+    }
+
+    useEffect(() =>{
+        getItinerary()
+    }, [])
     
     let descriptionSection
     if (itinerary.description) {

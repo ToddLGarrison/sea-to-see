@@ -17,7 +17,7 @@ destinationRouter.post("/", async (req, res) => {
     try {
         const newDestination = await Destination.query().insertAndFetch(destinationDataWithId)
         const destinationSerialized = DestinationSerializer.destinationDetails(newDestination)
-        return res.status(201).json({ destination: destinationSerialized})
+        return res.status(201).json({ destinations: destinationSerialized})
 
     } catch (error){
         if (error instanceof ValidationError) {
