@@ -220,6 +220,9 @@ a {
 }
 
 .destination-stop-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   text-align: center;
   border: 1px solid $primary-color;
   background-color: #FFFFFF;
@@ -229,8 +232,23 @@ a {
 }
 
 .destination-place-name {
+  text-align: center;
   font-weight: 500;
   margin-bottom: 0;
+}
+
+.destination-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+}
+
+.delete-button{
+  margin-left: 10%;
+  border-radius: 10em;
+  background-color: #F38181;
+
 }
 
 //itinerary card
@@ -263,7 +281,9 @@ a {
 }
 
 .google-maps-results {
+  border: 2px solid $primary-color;
+  border-radius: 1em;
   width: 80%;
   margin: .5em auto;
-  padding: .5em;
+  padding: 1em;
 }

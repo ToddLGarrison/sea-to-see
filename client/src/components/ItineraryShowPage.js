@@ -53,20 +53,26 @@ const ItineraryShowPage = (props) => {
         try {
             const itineraryId = props.match.params.id;
             const response = await fetch(
-                `/api/v1/itineraries/${itineraryId}/destinations/${destinationId}`,
-                {
+                `/api/v1/itineraries/${itineraryId}/destinations/${destinationId}`, {
                 method: "DELETE",
                 headers: new Headers({
                     "Content-Type": "application/json",
                 }),
-                }
-            );
+            })
             if (!response.ok) {
-                const errorMessage = `${response.status} (${response.statusText})`;
-                const error = new Error(errorMessage);
-                throw error;
+                if(response.status == 422) {
+                    const errorBody = await response.json()
+                    const newErrors = translateServerErrors(errorBody.error.data)
+                    return setErrors(newErrors)
+                } else {
+                    const errorMessage = `${response.status} (${response.statusText})`;
+                    const error = new Error(errorMessage);
+                    throw error;
+                }
+            } else {
+                const responseBody = await response.json()
+                setDestinations([...destinations.filter(dest => dest.id !== destinationId)])
             }
-            setDestinations(destinations.filter((destination) => destination.id !== destinationId));
             } catch (error) {
             console.error(`Error in Fetch: ${error.message}`);
             }
@@ -115,7 +121,8 @@ const ItineraryShowPage = (props) => {
                 }
             } else {
                 const body = await response.json()
-                setDestinations((destinations) => [...destinations, body.destination])
+                setErrors([])
+                return setDestinations([body.destinations, ...destinations])
             }
         } catch (error) {
             console.error(`Error in Fetch ${error.message}`)

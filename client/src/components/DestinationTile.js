@@ -1,7 +1,8 @@
 import React from "react";
 
 const DestinationTile = (props) => {
-    const { id, city, description, deleteDestination } = props.destination
+    const { id, city, description } = props.destination
+    const deleteDestination = props.deleteDestination
 
     const handleDelete = () => {
         deleteDestination(id)
@@ -10,8 +11,10 @@ const DestinationTile = (props) => {
     return (
         <div>
             <div className="destination-stop-box">
-                <p className="destination-place-name">{city}:</p>
-                <p className="itinerary-description">{description}</p>
+                <div className="destination-details">
+                    <p className="destination-place-name">{city}: </p>
+                    <p className="itinerary-description">{description}</p>
+                </div>
                 <button className="button travel-button delete-button" onClick={handleDelete}>X</button>
             </div>
         </div>

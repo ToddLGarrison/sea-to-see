@@ -10,7 +10,7 @@ const ResultTile = (props) => {
         props.addGoogleDestinationToList(destination)
     }
     return (
-        <div className="callout destination-stop-box google-maps-results">
+        <div className="callout google-maps-results">
             <h3>{props.result.name}</h3>
             <p>{props.result.types[0]}</p>
             <p>{props.result.formatted_address}</p>

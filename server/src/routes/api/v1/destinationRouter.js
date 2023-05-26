@@ -7,6 +7,31 @@ import DestinationSerializer from "../../../serializers/DestinationSerializer.js
 
 const destinationRouter = new express.Router({ mergeParams: true })
 
+destinationRouter.get("/", async (req, res) => {
+    const itineraryId = req.params.id
+
+    try {
+        const destinations = await Destination.query().where("itineraryId", itineraryId)
+        return res.status(200).json({ destinations })
+    } catch (error) {
+        return res.status(500).json({ errors: error })
+    }
+})
+
+destinationRouter.get("/:id", async (req, res) => {
+    const destinationId = req.params.id
+
+    try {
+        const destination = await Destination.query().findById(destinationId)
+        if(!destination) {
+            return res.status(404).json({ errors: error })
+        }
+        return res.status(200).json({ destination })
+    } catch (error) {
+        return res.status(500).json({ errors: error })
+    }
+})
+
 destinationRouter.post("/", async (req, res) => {
     const bodyRaw = req.body
     const body = cleanUserInput(bodyRaw)
@@ -17,7 +42,7 @@ destinationRouter.post("/", async (req, res) => {
     try {
         const newDestination = await Destination.query().insertAndFetch(destinationDataWithId)
         const destinationSerialized = DestinationSerializer.destinationDetails(newDestination)
-        return res.status(201).json({ destination: destinationSerialized})
+        return res.status(201).json({ destinations: destinationSerialized})
 
     } catch (error){
         if (error instanceof ValidationError) {
@@ -29,24 +54,17 @@ destinationRouter.post("/", async (req, res) => {
 
 })
 
-destinationRouter.delete("/:destinationId", async (req, res) => {
-    const itineraryId = req.params.id
-    const destinationId = req.params.destinationId
-    const user = req.user
+destinationRouter.delete("/:id", async (req, res) => {
+    const destinationId = req.params.id
 
     try {
         const destinationToDelete = await Destination.query().findById(destinationId)
-        .where({ id: destinationId, itineraryId: itineraryId})
-        .first()
-
-        if (!destinationToDelete) {
-            return res.status(404).json({ status: "Destination not found!"})
+        if(destinationToDelete) {
+            await Destination.query().delete().where("id", "=", destinationId)
+            return res.status(200).json({ status: "Destination removed"})
+        } else {
+            return res.status(404).json({ status: "Error with removing"})
         }
-        if (user.id !== destinationToDelete.userId) {
-            return res.status(403).json({ status: "Cannot delete destination" })
-        }
-        await Destination.query().deleteById(destinationId)
-        return res.status(200).json({ status: "Destination deleted" })
     } catch(error) {
         if (error instanceof ValidationError) {
             return res.status(422).json({ errors: error })
