@@ -42,7 +42,7 @@ const ItineraryShowPage = (props) => {
             } else {
                 const body = await response.json()
                 setErrors([])
-                return setDestinations([body.destinations, ...destinations])
+                return setDestinations([...destinations, body.destination])
             }
         } catch(error){
             console.error(`Error in Fetch: ${error.message}`)

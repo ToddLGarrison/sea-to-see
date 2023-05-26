@@ -7,6 +7,7 @@ const ResultTile = (props) => {
             city: name,
             description: types[0],
         }
+        console.log("in resulttile", destination)
         props.addGoogleDestinationToList(destination)
     }
     return (
