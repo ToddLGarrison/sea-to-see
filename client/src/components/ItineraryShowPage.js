@@ -78,26 +78,6 @@ const ItineraryShowPage = (props) => {
             }
         };
 
-    const getItinerary = async () => {
-        try {
-            const itineraryId = props.match.params.id
-            const response = await fetch(`/api/v1/itineraries/${itineraryId}`)
-            if (!response.ok) {
-                const errorMessage = `${response.status} (${response.statusText})`
-                const error = new Error(errorMessage)
-                throw(error)
-            }
-            const responseBody = await response.json()
-            setItinerary(responseBody.itinerary)
-            setDestinations(responseBody.itinerary.destinations)
-        } catch(error){
-            console.error(`Error in Fetch: ${error.message}`)
-        }
-    }
-
-    useEffect(() =>{
-        getItinerary()
-    }, [])
 
     const addGoogleDestinationToList = async (googleDestination) => {
         try {
@@ -121,14 +101,12 @@ const ItineraryShowPage = (props) => {
                 }
             } else {
                 const body = await response.json()
-                setErrors([])
-                return setDestinations([body.destinations, ...destinations])
+                setDestinations((destinations) => [...destinations, body.destination])
             }
         } catch (error) {
             console.error(`Error in Fetch ${error.message}`)
         }
     }
-
     
     let descriptionSection
     if (itinerary.description) {
