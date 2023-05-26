@@ -108,6 +108,27 @@ const ItineraryShowPage = (props) => {
         }
     }
     
+    const getItinerary = async () => {
+        try {
+            const itineraryId = props.match.params.id
+            const response = await fetch(`/api/v1/itineraries/${itineraryId}`)
+            if (!response.ok) {
+                const errorMessage = `${response.status} (${response.statusText})`
+                const error = new Error(errorMessage)
+                throw(error)
+            }
+            const responseBody = await response.json()
+            setItinerary(responseBody.itinerary)
+            setDestinations(responseBody.itinerary.destinations)
+        } catch(error){
+            console.error(`Error in Fetch: ${error.message}`)
+        }
+    }
+
+    useEffect(() =>{
+        getItinerary()
+    }, [])
+
     let descriptionSection
     if (itinerary.description) {
         descriptionSection = <div className="itinerary-description">
@@ -155,9 +176,9 @@ const ItineraryShowPage = (props) => {
                     {dateSection}
                     {descriptionSection}
                 </div>
-                    <div className="edit-itinerary-button">
-                        {editButton}
-                    </div>
+                <div className="edit-itinerary-button">
+                    {editButton}
+                </div>
             </div>
                 
             <div className="itinerary-show-page-box">
