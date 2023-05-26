@@ -49,6 +49,35 @@ const ItineraryShowPage = (props) => {
         }
     }
 
+    const deleteDestination = async (destinationId) => {
+        try {
+            const itineraryId = props.match.params.id;
+            const response = await fetch(
+                `/api/v1/itineraries/${itineraryId}/destinations/${destinationId}`, {
+                method: "DELETE",
+                headers: new Headers({
+                    "Content-Type": "application/json",
+                }),
+            })
+            if (!response.ok) {
+                if(response.status == 422) {
+                    const errorBody = await response.json()
+                    const newErrors = translateServerErrors(errorBody.error.data)
+                    return setErrors(newErrors)
+                } else {
+                    const errorMessage = `${response.status} (${response.statusText})`;
+                    const error = new Error(errorMessage);
+                    throw error;
+                }
+            } else {
+                const responseBody = await response.json()
+                setDestinations([...destinations.filter(dest => dest.id !== destinationId)])
+            }
+            } catch (error) {
+            console.error(`Error in Fetch: ${error.message}`);
+            }
+        };
+
 
     const addGoogleDestinationToList = async (googleDestination) => {
         try {
@@ -72,34 +101,12 @@ const ItineraryShowPage = (props) => {
                 }
             } else {
                 const body = await response.json()
-                setErrors([])
-                return setDestinations([body.destinations, ...destinations])
+                setDestinations((destinations) => [...destinations, body.destination])
             }
         } catch (error) {
             console.error(`Error in Fetch ${error.message}`)
         }
     }
-
-    const getItinerary = async () => {
-        try {
-            const itineraryId = props.match.params.id
-            const response = await fetch(`/api/v1/itineraries/${itineraryId}`)
-            if (!response.ok) {
-                const errorMessage = `${response.status} (${response.statusText})`
-                const error = new Error(errorMessage)
-                throw(error)
-            }
-            const responseBody = await response.json()
-            setItinerary(responseBody.itinerary)
-            setDestinations(responseBody.itinerary.destinations)
-        } catch(error){
-            console.error(`Error in Fetch: ${error.message}`)
-        }
-    }
-
-    useEffect(() =>{
-        getItinerary()
-    }, [])
     
     let descriptionSection
     if (itinerary.description) {
@@ -154,7 +161,7 @@ const ItineraryShowPage = (props) => {
             </div>
                 
             <div className="itinerary-show-page-box">
-                <ItineraryDestinationList destinations={destinations} />
+                <ItineraryDestinationList destinations={destinations} deleteDestination={deleteDestination} />
                 {destinationForm}
             </div>
 
