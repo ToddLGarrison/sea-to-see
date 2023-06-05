@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SignOutButton from "../authentication/SignOutButton";
+import travelIcon from "../../assets/images/travel-icon.png"
 
 const TopBar = ({ user }) => {
   const [showDropDown, setShowDropDown] = useState(false);
@@ -30,6 +31,9 @@ const TopBar = ({ user }) => {
     <div className="top-bar navbar-border">
       <div className="top-bar-left">
         <ul className="menu">
+          <li>
+            <img className="top-bar-icon" src={travelIcon} />
+          </li>
           <li className="sea-to-see">Sea to See</li>
           {newItineraryLink}
         </ul>

@@ -24,7 +24,7 @@ $accent-color-two: #6495ED;
 }
 
 body {
-  background-color: $main-background-color;
+  background-color: #ade1f2;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -55,6 +55,12 @@ a {
 
 .navbar-border {
   border-bottom: 1px $primary-color solid;
+}
+
+.top-bar-icon {
+  height: 3em;
+  margin-top: .3em;
+  margin-right: 1em ;
 }
 
 
@@ -105,22 +111,37 @@ a {
 }
 
 .homepage-photo{
-  position: relative;
-  width:100%;
+  // position: relative;
+  // width:100%;
+  height: 100%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .homepage-text {
   position: absolute;
   font-style: italic;
   font-weight: lighter;
-  font-size: 6vw;
+  font-size: 8vw;
   top: 8%;
   left: 5%;
   max-width: 100%;
   height: auto;
 }
 
+.developed-by-text{
+  position: absolute;
+  bottom: .1em;
+  left: 40%;
+  transform: translateX(.50%);
+  font-family: lato, sans-serif;
+  font-size: .8em;
+}
+
 .user-details {
+  // background-color: $main-background-color;
   border-bottom: 1px solid $accent-color-two;
   margin-bottom: 2em;
 }
@@ -150,7 +171,7 @@ a {
 
 .itinerary-box{
   border: 3px solid $primary-color;
-  width: 60%;
+  width: 75%;
   margin: .5em auto;
   background-color: $main-background-color;
   border-radius: 1em;
@@ -174,13 +195,13 @@ a {
   border: 3px solid $primary-color;
   width: 30%;
   margin: .5em auto;
-  background-color: $secondary-color;
+  background-color: $main-background-color;
   border-radius: 1em;
   padding: 1em;
 
   &:hover {
-    background-color: #769ABE;
-    border: $primary-color;
+    background-color: $secondary-color;
+    border: 3px solid $primary-color;
   }
 }
 
@@ -264,11 +285,6 @@ a {
   align-items: stretch;
 }
 
-//developed by
-.developed-by-text{
-  font-family: lato, sans-serif;
-  font-size: .8em;
-}
 
 //Google Map & Results
 

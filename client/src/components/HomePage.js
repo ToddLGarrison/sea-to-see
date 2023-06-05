@@ -1,16 +1,16 @@
 import React from "react";
-import oman from "../assets/images/Oman_Mountain_Sunset.jpg"
+import chairs from "../assets/images/two_chairs.png"
 
 const HomePage = (props) => {
     return(
         <div className="primary home-box">
             <div className="grid homepage">
-                <img className="homepage-photo" src={oman} alt="Sun set in Jabal Shams, Oman" />
+                <img className="homepage-photo" src={chairs} alt="Two chairs on a beach" />
+                <p className="developed-by-text">Developed by Todd Garrison</p>
             </div>
             <h4 className="homepage-text">
                 Plan <em>your</em> trip
             </h4>
-            <p className="developed-by-text">Developed by Todd Garrison</p>
         </div>
     )
 }
