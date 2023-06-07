@@ -1,5 +1,5 @@
 import React from "react";
-import chairs from "../assets/images/two_chairs.png"
+import chairs from "../assets/images/beachchairs.png"
 
 const HomePage = (props) => {
     return(
