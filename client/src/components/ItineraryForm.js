@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import ErrorList from "./layout/ErrorList";
 import translateServerErrors from "../services/translateServerErrors";
 import { Redirect } from "react-router-dom";
+import Dropzone from "react-dropzone"
+
 
 const ItineraryForm = (props) => {
+    const [images, setImages] = useState([])
+    const [newImageFormData, setNewImageFormData] = useState([])
+
     const [errors, setErrors] = useState([])
     const [shouldRedirect, setShouldRedirect] = useState(false)
     const [newItinerary, setNewItinerary] = useState({
@@ -25,7 +30,20 @@ const ItineraryForm = (props) => {
         postItinerary(newItinerary)
     }
 
+    const handleImageUpload = (acceptedImage) => {
+        setNewImageFormData({
+            ...newImageFormData,
+            image: acceptedImage[0]
+        })
+    }
+
     const postItinerary = async (newItineraryData) => {
+        const formData = new FormData()
+        formData.append('name', newItinerary.name)
+        formData.append('description', newItinerary.description)
+        formData.append('departureDate', newItinerary.departureDate)
+        formData.append('returnDate', newItinerary.returnDate)
+        formData.append('image', newItinerary.image)
         try {
             const response = await fetch(`/api/v1/itineraries`, {
                 method: "POST",
@@ -99,6 +117,18 @@ const ItineraryForm = (props) => {
                             value={newItinerary.returnDate}
                         />
                 </label>
+                <div className="callout primary">
+                    <Dropzone onDrop={handleImageUpload}>
+                        {({getRootProps, getInputProps}) =>(
+                            <section>
+                                <div {...getRootProps()}>
+                                    <input {...getInputProps()} />
+                                    <p className="form-title">Upload Itinerary Picture - drag 'n' drop or click to upload</p>
+                                </div>
+                            </section>
+                        )}
+                    </Dropzone>
+                </div>
                 <input className="button travel-button" type="submit" value="Create" />
             </form>
         </div>

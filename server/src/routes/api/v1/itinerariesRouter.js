@@ -4,6 +4,7 @@ import { ValidationError } from "objection"
 import cleanUserInput from "../../../services/cleanUserInput.js"
 import { User, Itinerary, Destination } from "../../../models/index.js"
 import destinationRouter from "./destinationRouter.js"
+import uploadImage from "../../../services/uploadImage.js"
 
 const itinerariesRouter = new express.Router()
 
@@ -16,12 +17,13 @@ itinerariesRouter.get("/", async (req, res) => {
     }
 })
 
-itinerariesRouter.post("/", async (req, res) => {
+itinerariesRouter.post("/", uploadImage.single("image") async (req, res) => {
     const { name, description, departureDate, returnDate } = req.body
     const { id } = req.user
+    const image = req.file ? req.file.location : null
     try {
         const postingUser = await User.query().findById(id)
-        const cleanItinerary = cleanUserInput({ name, description, departureDate, returnDate })
+        const cleanItinerary = cleanUserInput({ name, description, departureDate, returnDate, imageURL: image })
         const newItinerary = await postingUser.$relatedQuery("itineraries").insertAndFetch(cleanItinerary)
 
         return res.status(201).json({ itineraries: newItinerary })

@@ -11,11 +11,12 @@ const ItineraryShowPage = (props) => {
         description: "",
         departureDate: "",
         returnDate: "",
-        destinations: []
+        destinations: [],
+        imageURL: ""
 
     })
 
-    const [ errors, setErrors] = useState([])
+    const [errors, setErrors] = useState([])
     const [destinations, setDestinations] = useState([])
     const [shouldRedirect, setShouldRedirect] = useState(false)
 
@@ -154,6 +155,11 @@ const ItineraryShowPage = (props) => {
         )
     }
 
+    let imageSection
+    if(itinerary.imageURL) {
+        imageSection = <img src={itinerary?.imageURL} className="itinerary-pics" />
+    }
+
     let editButton;
 
     const editItinerary = () => {
@@ -178,6 +184,9 @@ const ItineraryShowPage = (props) => {
                 </div>
                 <div className="edit-itinerary-button">
                     {editButton}
+                </div>
+                <div className="tile-image cell small-5">
+                    {imageSection}
                 </div>
             </div>
                 
