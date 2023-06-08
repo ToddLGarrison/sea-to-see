@@ -111,11 +111,10 @@ a {
 }
 
 .homepage-photo{
-  // position: relative;
-  // width:100%;
-  height: 100%;
-
-  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  // background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -134,7 +133,7 @@ a {
 .developed-by-text{
   position: absolute;
   bottom: .1em;
-  left: 40%;
+  left: 50%;
   transform: translateX(.50%);
   font-family: lato, sans-serif;
   font-size: .8em;
