@@ -17,13 +17,13 @@ Third party API
 
 - Prerequisite: have Yarn version 1.22.19 and Node version ^16.18
 - Clone the repository (git clone https://github.com/ToddLGarrison/sea-to-see.git)
-- cd sea-to-see
-- Install packages with Yarn (yarn install)
-- cd server
-- yarn run migrate:latest
-- yarn db:seed
-- yarn run dev
-- Open the development site at localhost:3000
+  - cd sea-to-see
+  - Install packages with Yarn (yarn install)
+  - cd server
+  - yarn run migrate:latest
+  - yarn db:seed
+  - yarn run dev
+  - Open the development site at localhost:3000
 
 #Seeding Data
 
