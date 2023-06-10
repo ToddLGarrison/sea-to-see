@@ -17,7 +17,7 @@ itinerariesRouter.get("/", async (req, res) => {
     }
 })
 
-itinerariesRouter.post("/", uploadImage.single("image") async (req, res) => {
+itinerariesRouter.post("/", uploadImage.single("image"), async (req, res) => {
     const { name, description, departureDate, returnDate } = req.body
     const { id } = req.user
     const image = req.file ? req.file.location : null
