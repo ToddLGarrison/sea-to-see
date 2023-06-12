@@ -15,6 +15,7 @@ usersRouter.get("/", async (req, res) => {
 });
 
 
+
 usersRouter.post("/", async (req, res) => {
   const { username, email, password } = req.body;
   try {
@@ -30,4 +31,27 @@ usersRouter.post("/", async (req, res) => {
   }
 });
 
+usersRouter.get("/image", async (req, res) => {
+  try {
+    const userToReturn = await User.query().findById(req.user.id)
+    return res.status(200).json({ photo: userToReturn.imageURL})
+  } catch (error) {
+    return res.status(500).json({ errors: error })
+  }
+})
+
+usersRouter.post("/image", uploadImage.single("image"), async (req, res) =>{
+  try {
+    const { body } = req
+    const data = {
+      ...body,
+      image: req.file.location
+    };
+    const user = await User.query().findById(req.user.id)
+    await user.$query().patch({ imageURL: req.file.location })
+    return res.status(201).json({ photo: user.imageURL })
+  } catch (error) {
+    return res.status(500).json({ errors: error })
+  }
+})
 export default usersRouter;
