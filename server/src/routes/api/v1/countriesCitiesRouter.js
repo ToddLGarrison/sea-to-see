@@ -16,13 +16,14 @@ countriesCitiesRouter.get("/countries", async (req, res) => {
         const response = await fetch(url, options)
         const result = await response.text()
         console.log(result)
-        
+
         if(!results){
             console.log(error)
             return res.status(404).json({ errors: error })
         }
         return res.status(200).json({ result })
     } catch(error) {
+        console.log(error)
         res.status(500).json({ errors: error })
     }
 
