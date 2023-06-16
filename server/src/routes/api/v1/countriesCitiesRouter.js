@@ -7,7 +7,7 @@ countriesCitiesRouter.get("/countries", async (req, res) => {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': "db8ed0cebfmsh52ce2fc91c47f63p1a93a7jsn622cfed9d691",
+            'X-RapidAPI-Key': "",
             'X-RapidAPI-Host': 'countries-cities.p.rapidapi.com'
         }
     }
