@@ -7,7 +7,6 @@ const ResultTile = (props) => {
             city: name,
             description: types[0],
         }
-        console.log("in resulttile", destination)
         props.addGoogleDestinationToList(destination)
     }
     return (
@@ -15,7 +14,8 @@ const ResultTile = (props) => {
             <h3>{props.result.name}</h3>
             <p>{props.result.types[0]}</p>
             <p>{props.result.formatted_address}</p>
-            <p>{props.result.rating} / 5</p>
+            <p>Rating: {props.result.rating} / 5</p>
+            {/* <p>{props.result.geometry.location}</p> */}
             <button className="button travel-button" onClick={handleAddDestination}>Add to Destination List</button>
         </div>
     )
