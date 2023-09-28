@@ -5,7 +5,7 @@ const HomePage = (props) => {
     return(
         <div className="primary home-box">
             <div className="grid homepage">
-                <img className="homepage-photo" src={taj} alt="A person standing in front of a building" />
+                <img className="homepage-photo" src={taj} alt="A person standing in front of the baby taj" />
                 <p className="developed-by-text">Developed by Todd Garrison</p>
             </div>
             <h4 className="homepage-text">
