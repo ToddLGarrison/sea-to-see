@@ -1,6 +1,6 @@
 import express from "express"
 import objection from "objection"
-const { ValidationError } = objection
+import { ValidationError } from "objection"
 import { Destination } from "../../../models/index.js"
 import cleanUserInput from "../../../services/cleanUserInput.js"
 import DestinationSerializer from "../../../serializers/DestinationSerializer.js"
