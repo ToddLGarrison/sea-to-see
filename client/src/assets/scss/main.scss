@@ -131,12 +131,13 @@ a {
 }
 
 .developed-by-text{
+  text-align: center;
   position: absolute;
-  bottom: .1em;
-  left: 50%;
-  transform: translateX(.50%);
+  bottom: .001rem;
+  left: 46%;
   font-family: lato, sans-serif;
   font-size: .8em;
+  color: $accent-color-one;
 }
 
 .user-details {
