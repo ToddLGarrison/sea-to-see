@@ -2,7 +2,7 @@
 
 Sea to See is an app designed to help users create and plan itineraries for upcoming trips. The app leverages Google Maps API to allow users to search and add destinations to a list on their itinerary page.
 
-<a href="sea-to-see.herokuapp.com">sea-to-see.herokuapp.com</a>
+<a href="https://sea-to-see.herokuapp.com">sea-to-see.herokuapp.com</a>
 
 # Programming
 
